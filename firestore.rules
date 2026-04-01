@@ -1,0 +1,31 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Schema definition for the `reduced_reviews` collection
+    // Expected fields:
+    // - City: string
+    // - Place: string
+    // - Review: string
+    // - Rating: number or string
+    // - Name: string
+    // - Date: string
+    // - Raw_Review: string
+    
+    match /reduced_reviews/{reviewId} {
+      // 1. Allow public read access so anyone using your app can view recommendations
+      allow read: if true;
+      
+      // 2. Restrict create/update/delete access to only authenticated admins
+      // Note: Your Python script uses the Firebase Admin SDK, which bypasses
+      // these rules completely. So your script will still be able to write!
+      allow write: if false; 
+    }
+    
+    // Default rule: block everything else by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
