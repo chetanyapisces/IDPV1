@@ -1,0 +1,16 @@
+# Core MVC Backend
+fastapi
+uvicorn[standard]
+pydantic
+
+# ML and AI Dependencies
+pandas
+spacy
+vaderSentiment
+google-genai
+
+# Firebase Client Integrations
+firebase-admin
+
+# Environment Secrets
+python-dotenv

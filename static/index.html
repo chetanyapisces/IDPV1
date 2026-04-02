@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Itinerary Generator | Claymorphism</title>
+    <!-- We link in Google Fonts for a premium aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Include our theme CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Include Markdown parser for Gemini output -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Include DOM manipulation script -->
+    <script src="/static/app.js" defer></script>
+</head>
+<body>
+    <div class="clay-container">
+        <h1 class="clay-title">Smart Travel Itinerary</h1>
+        <p class="clay-subtitle">Tell us what you want, and let AI build out the perfect vacation.</p>
+        
+        <form id="itinerary-form" class="clay-form">
+            <div class="input-group">
+                <label for="city">Preferred City/Region</label>
+                <input type="text" id="city" class="clay-input" placeholder="e.g., Jaipur" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="attributes">What are you looking for?</label>
+                <input type="text" id="attributes" class="clay-input" placeholder="e.g., history, temples, peaceful" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="days">Trip Duration (Days)</label>
+                <input type="number" id="days" class="clay-input" value="3" min="1" max="30" required>
+            </div>
+            
+            <button type="submit" id="submit-btn" class="clay-btn">Start Exploring</button>
+        </form>
+
+        <!-- Dynamic Results Container -->
+        <div id="results-container" class="hidden">
+            <div id="loading-indicator" class="clay-loading hidden">
+                <div class="spinner"></div>
+                <p>Analyzing datasets & crunching vectors... (this may take a bit!)</p>
+            </div>
+            
+            <div id="itinerary-output" class="clay-output hidden">
+                <h2 id="destination-title" class="clay-highlight"></h2>
+                <div class="output-stats">
+                    <span id="rating-stat" class="clay-pill"></span>
+                    <span id="match-stat" class="clay-pill"></span>
+                </div>
+                
+                <h3>Financial Projection</h3>
+                <div id="finance-box" class="clay-card markdown"></div>
+                
+                <h3>Calculated Itinerary</h3>
+                <div id="itinerary-box" class="clay-card markdown"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

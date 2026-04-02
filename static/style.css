@@ -1,0 +1,207 @@
+/* Define Claymorphism Global Theme Variables */
+:root {
+    --bg-color: #E0EAF5;
+    --clay-base: #F8FBFF;
+    --clay-dark: rgba(0, 0, 0, 0.1);
+    --clay-light: rgba(255, 255, 255, 1);
+    --primary: #85AEDD;
+    --primary-light: #B7D4F5;
+    --text-color: #384F66;
+    --text-light: #6F8CAC;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Base Clay Element Strategy:
+   1. Large border radius
+   2. Drop shadow for elevation
+   3. Inner shadow for volumetric "clay" depth 
+*/
+.clay-container {
+    background-color: var(--clay-base);
+    width: 650px;
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 40px;
+    box-shadow: 
+        15px 15px 30px var(--clay-dark), 
+        -15px -15px 30px var(--clay-light),
+        inset 5px 5px 15px rgba(255, 255, 255, 0.7),
+        inset -5px -5px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease;
+}
+
+.clay-title {
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+}
+
+.clay-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.clay-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    margin-left: 15px;
+    display: block;
+    color: var(--text-light);
+}
+
+.clay-input {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 16px;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    /* Inset shadow mimics an indentation into the clay */
+    box-shadow: 
+        inset 6px 6px 12px var(--clay-dark), 
+        inset -6px -6px 12px var(--clay-light);
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.clay-input:focus {
+    box-shadow: 
+        inset 10px 10px 20px rgba(0,0,0,0.15), 
+        inset -10px -10px 20px rgba(255,255,255,1);
+}
+
+.clay-btn {
+    margin-top: 15px;
+    padding: 16px;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    background-color: var(--primary);
+    cursor: pointer;
+    box-shadow: 
+        8px 8px 16px rgba(133, 174, 221, 0.4), 
+        -8px -8px 16px var(--clay-light),
+        inset 4px 4px 10px rgba(255,255,255,0.4),
+        inset -4px -4px 10px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+}
+
+.clay-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        10px 10px 20px rgba(133, 174, 221, 0.5), 
+        -10px -10px 20px var(--clay-light),
+        inset 4px 4px 10px rgba(255,255,255,0.5),
+        inset -4px -4px 10px rgba(0,0,0,0.15);
+}
+
+.clay-btn:active {
+    transform: translateY(2px);
+    box-shadow: 
+        inset 8px 8px 16px rgba(0,0,0,0.2), 
+        inset -8px -8px 16px rgba(255,255,255,0.2);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Result Elements */
+#results-container {
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 2px dashed rgba(133, 174, 221, 0.3);
+}
+
+.clay-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 4px solid var(--primary-light);
+    border-top-color: var(--primary);
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.clay-highlight {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.output-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.clay-pill {
+    padding: 8px 15px;
+    background-color: var(--clay-base);
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    box-shadow: 
+        4px 4px 8px var(--clay-dark), 
+        -4px -4px 8px var(--clay-light);
+}
+
+.clay-card {
+    background-color: var(--clay-base);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 
+        inset 5px 5px 15px var(--clay-dark), 
+        inset -5px -5px 15px var(--clay-light);
+    line-height: 1.6;
+}
+
+.clay-card h1, .clay-card h2, .clay-card h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.clay-card ul, .clay-card li {
+    margin-bottom: 10px;
+}
